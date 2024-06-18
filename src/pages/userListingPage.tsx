@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import profileimg from '../assets/profilelogo.webp'
+import { Link } from 'react-router-dom'
 
 const UserListingPage:React.FC = () => {
 
@@ -23,15 +24,15 @@ const toggleMenu=()=>{
     
     
             <div className="w-full text-white flex justify-evenly gap-4">
-                <a className="hover:text-gray-300" href='user_cardlisting.html'>Home</a>
-            <a className="hover:text-gray-300" href='#'>About</a>
-            <a className="hover:text-gray-300"  href='user_editprofile.html'>Edit Profile</a>
-            <a className="hover:text-gray-300" href='user_registration.html'>Signup</a>
+                <Link className="hover:text-gray-300" to='/userlisting'>Home</Link>
+            <Link className="hover:text-gray-300" to='/about'>About</Link>
+            <Link className="hover:text-gray-300"  to='/editprofile'>Edit Profile</Link>
+            <Link className="hover:text-gray-300" to='/signup'>Signup</Link>
             </div>
             
             <div className="w-full text-white flex justify-end gap-4">
-                <a className="hover:text-gray-300" href='user_signin.html'>Login</a>
-                <a className="hover:text-gray-300" href='#'>Settings</a>    
+                <Link className="hover:text-gray-300" to='/login'>Login</Link>
+                <Link className="hover:text-gray-300" to='/settings'>Settings</Link>    
             </div>
     
     
@@ -63,12 +64,12 @@ const toggleMenu=()=>{
     
     <div id="mobile-menu" className={isMenuVisible?'bg-[#3e5cad] md:hidden ':'hidden'} >
     
-      <a href="user_cardlisting.html" className="block font-bold px-2 py-2  text-gray-300 hover:text-white">Home</a>
-      <a href="#" className="block font-bold px-2 py-2 text-gray-300 hover:text-white">About</a>
-      <a href="user_registration.html" className="block font-bold px-2 py-2 text-gray-300 hover:text-white">Signup</a>
-      <a href="user_editprofile.html" className="block font-bold px-2 py-2 text-gray-300 hover:text-white">Edit Profile</a>
-      <a href="user_signin.html" className="block font-bold px-2 py-2 text-gray-300 hover:text-white">Login</a>
-      <a href="#" className="block font-bold px-2 py-2 text-gray-300 hover:text-white">Account settings</a>
+      <Link to="/userlisting" className="block font-bold px-2 py-2  text-gray-300 hover:text-white">Home</Link>
+      <Link to="/" className="block font-bold px-2 py-2 text-gray-300 hover:text-white">About</Link>
+      <Link to="/signup" className="block font-bold px-2 py-2 text-gray-300 hover:text-white">Signup</Link>
+      <Link to="/editprofile" className="block font-bold px-2 py-2 text-gray-300 hover:text-white">Edit Profile</Link>
+      <Link to="/login" className="block font-bold px-2 py-2 text-gray-300 hover:text-white">Login</Link>
+      <Link to="/" className="block font-bold px-2 py-2 text-gray-300 hover:text-white">Account settings</Link>
     
     
     </div>
