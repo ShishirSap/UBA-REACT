@@ -2,8 +2,12 @@ import { useState } from 'react'
 import React from 'react'
 import logo from '../assets/logo.jpeg'
 import { Link } from 'react-router-dom'
+import PasswordInput from "../components/passwordInput";
+import usePasswordToggle from "../hooks/passwordToggler";
 
 const Login:React.FC = () => {
+
+  const { isFieldVisible, toggleVisibility } = usePasswordToggle();
 
   const [formData,setFormData]=useState({
     email:'',
@@ -81,16 +85,13 @@ const handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
             
              </div>
 
-  <div className="w-4/5 vsm:w-1/2"> <label className="block" htmlFor="password">Password:</label>
-    <i className="text-green-700 absolute ml-1 pt-1 fa fa-key icon"></i>
-     <input onChange={handleChange} className="border-2 border-black  rounded-full w-full text-center mb-20px" type="password" id="password" name="password" />
+             <div className="w-4/5 vsm:w-1/2 ">
+            <label className="block" htmlFor="confirm-password">Password:</label>
+            <i className="text-green-700 absolute ml-1 pt-1 fa fa-key icon"></i>
+              <PasswordInput className="border-2 border-black  rounded-full w-full text-center mb-20px" name="password" value={formData.password} onChange={handleChange} placeholder='' isVisible={isFieldVisible('password')} onToggleVisibility={()=>toggleVisibility('password')} />
+              {errors.password && <span className='text-red-700'>{errors.password}</span>}
+</div>
 
-     <div className="showpassword">
-        <input type="checkbox" id="passwordcheck"/>
-        <label className="font-normal inline text-1rem text-[#372d2d]" htmlFor="passwordcheck">Show</label>
-      </div>
-  {errors.password && <span className='text-red-700'>{errors.password}</span>}
-     </div>
      <div className="w-4/5 vsm:w-1/2 text-white p-1 text-center hover:bg-green-600 hover:cursor-pointer rounded-full mt-4 text-xl font-mono font-bold  bg-green-800"><button type="submit">Sign in</button></div>
      <div  className="px-6">Don't have an account? <Link className=" inline underline" to="/signup">Signup now</Link></div>
 
