@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import logo from '../assets/logo.jpeg'
 import { Link } from "react-router-dom";
+import PasswordInput from "../components/passwordInput";
+import usePasswordToggle from "../hooks/passwordToggler";
+
 
  const Signup:React.FC =()=>{
-
-
+  const { isFieldVisible, toggleVisibility } = usePasswordToggle();
 
   const [formData,setFormData]=useState({
     name:'',
@@ -22,8 +24,7 @@ import { Link } from "react-router-dom";
   })
 
 
-  const [passwordvisibility,setPasswordVisibility]=useState(false)
-  const [confirmpasswordvisibility,setConfirmPasswordVisibility]=useState(false)
+
 
 
 
@@ -146,47 +147,24 @@ return (
                           {errors.email && <span className='text-red-700'>{errors.email}</span>}
 
               </div>
-            
-              <div className="w-4/5 vsm:w-1/2  "> <label className="block" htmlFor="password">Password:</label>
-                <i className="text-green-700 absolute ml-1 pt-1 fa fa-key icon"></i>
-                <input
-                onChange={handleChange}
-                  className="border-2 border-black  rounded-full w-full text-center mb-20px"
-                  type={passwordvisibility?'text':'password'}
-                  id="password"
-                  name="password"
-                />
-                <div className="showpassword">
-                <input name='showpassword' onClick={()=>{
-                setPasswordVisibility(!passwordvisibility)
-              }} type="checkbox" id="passwordcheck"/>
-                <label className=" font-normal inline text-1rem text-[#372d2d]" htmlFor="passwordcheck">Show</label>
-              </div>
 
+<div className="w-4/5 vsm:w-1/2 ">
+            <label className="block" htmlFor="confirm-password">Password:</label>
+            <i className="text-green-700 absolute ml-1 pt-1 fa fa-key icon"></i>
+              <PasswordInput className="border-2 border-black  rounded-full w-full text-center mb-20px" name="password" value={formData.password} onChange={handleChange} placeholder='' isVisible={isFieldVisible('password')} onToggleVisibility={()=>toggleVisibility('password')} />
               {errors.password && <span className='text-red-700'>{errors.password}</span>}
+</div>
 
-              </div>
-           
 
-           <div className="w-4/5 vsm:w-1/2 ">
+
+
+<div className="w-4/5 vsm:w-1/2 ">
             <label className="block" htmlFor="confirm-password">Confirm Password:</label>
             <i className="text-green-700 absolute ml-1 pt-1 fa fa-key icon"></i>
-            <input
-            onChange={handleChange}
-              className="border-2 border-black  rounded-full w-full text-center mb-20px"
-              type={confirmpasswordvisibility?'text':'password'}
-              id="confirmpassword"
-              name="confirmpassword"
-            />
-            <div className="showpassword">
-              <input name='showconfirmpassword' onClick={()=>{
-                setConfirmPasswordVisibility(!confirmpasswordvisibility)
-              }} type="checkbox" id="confirmpasswordcheck"/>
-              <label className="font-normal inline text-1rem text-[#372d2d]" htmlFor="confirmpasswordcheck">Show</label>
-            </div>
-            {errors.confirmpassword && <span className='text-red-700'>{errors.confirmpassword}</span>}
-
-           </div> 
+              <PasswordInput className="border-2 border-black  rounded-full w-full text-center mb-20px" name="confirmpassword" value={formData.confirmpassword} onChange={handleChange} placeholder='' isVisible={isFieldVisible('confirmpassword')} onToggleVisibility={()=>toggleVisibility('confirmpassword')} />
+              {errors.confirmpassword && <span className='text-red-700'>{errors.confirmpassword}</span>}
+</div>
+      
            <div className="text-white p-1 text-center hover:bg-green-600 hover:cursor-pointer rounded-full mt-4 text-xl font-mono font-bold w-4/5 vsm:w-1/2 bg-green-800"><button className="" type="submit">REGISTER</button></div>
           </div>
           
