@@ -23,11 +23,6 @@ import usePasswordToggle from "../hooks/passwordToggler";
     confirmpassword:''
   })
 
-
-
-
-
-
   const validateSignupForm=()=>{
     let isValid=true
     let formErrors={name:'',email:'',password:'',confirmpassword:''}
@@ -89,8 +84,6 @@ if(validateSignupForm()){
 
 const handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
 
-  console.log('checkbox',e.target)
-
 const {name,value}=e.target;
 
 setFormData({
@@ -103,7 +96,7 @@ setFormData({
 
 
 return (
-    <body className="m-0"> 
+    <div className="m-0"> 
     <div className="flex bg-gradient-to-r from-[#001aff00] to-[#0e579f] md:bg-none flex-col gap-10 w-screen h-screen  md:flex md:flex-row ">
       <div className="flex  p-1 items-start w-1/5 md:w-1/2 md:items-center">
         <img src={logo} alt="logo"/>
@@ -151,7 +144,7 @@ return (
 <div className="w-4/5 vsm:w-1/2 ">
             <label className="block" htmlFor="confirm-password">Password:</label>
             <i className="text-green-700 absolute ml-1 pt-1 fa fa-key icon"></i>
-              <PasswordInput className="border-2 border-black  rounded-full w-full text-center mb-20px" name="password" value={formData.password} onChange={handleChange} placeholder='' isVisible={isFieldVisible('password')} onToggleVisibility={()=>toggleVisibility('password')} />
+              <PasswordInput id="password" className="border-2 border-black  rounded-full w-full text-center mb-20px" name="password" value={formData.password} onChange={handleChange} placeholder='' isVisible={isFieldVisible('password')} onToggleVisibility={()=>toggleVisibility('password')} />
               {errors.password && <span className='text-red-700'>{errors.password}</span>}
 </div>
 
@@ -161,7 +154,7 @@ return (
 <div className="w-4/5 vsm:w-1/2 ">
             <label className="block" htmlFor="confirm-password">Confirm Password:</label>
             <i className="text-green-700 absolute ml-1 pt-1 fa fa-key icon"></i>
-              <PasswordInput className="border-2 border-black  rounded-full w-full text-center mb-20px" name="confirmpassword" value={formData.confirmpassword} onChange={handleChange} placeholder='' isVisible={isFieldVisible('confirmpassword')} onToggleVisibility={()=>toggleVisibility('confirmpassword')} />
+              <PasswordInput id="confirm-password"  className="border-2 border-black  rounded-full w-full text-center mb-20px" name="confirmpassword" value={formData.confirmpassword} onChange={handleChange} placeholder='' isVisible={isFieldVisible('confirmpassword')} onToggleVisibility={()=>toggleVisibility('confirmpassword')} />
               {errors.confirmpassword && <span className='text-red-700'>{errors.confirmpassword}</span>}
 </div>
       
@@ -170,7 +163,7 @@ return (
           
         </form>
     </div>
-  </body>
+  </div>
 )
 }
 export default Signup

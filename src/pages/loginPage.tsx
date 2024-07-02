@@ -88,7 +88,7 @@ const handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
              <div className="w-4/5 vsm:w-1/2 ">
             <label className="block" htmlFor="confirm-password">Password:</label>
             <i className="text-green-700 absolute ml-1 pt-1 fa fa-key icon"></i>
-              <PasswordInput className="border-2 border-black  rounded-full w-full text-center mb-20px" name="password" value={formData.password} onChange={handleChange} placeholder='' isVisible={isFieldVisible('password')} onToggleVisibility={()=>toggleVisibility('password')} />
+              <PasswordInput id="password" className="border-2 border-black  rounded-full w-full text-center mb-20px" name="password" value={formData.password} onChange={handleChange} placeholder='' isVisible={isFieldVisible('password')} onToggleVisibility={()=>toggleVisibility('password')} />
               {errors.password && <span className='text-red-700'>{errors.password}</span>}
 </div>
 

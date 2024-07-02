@@ -1,5 +1,6 @@
 import React from "react";
 interface PasswordInputProps{
+    id:string
     name:string;
     value:string;
     onChange:React.ChangeEventHandler<HTMLInputElement>;
@@ -10,7 +11,7 @@ interface PasswordInputProps{
 }
 
 const PasswordInput:React.FC<PasswordInputProps>=({
-    name,value,onChange,className,placeholder,isVisible,onToggleVisibility,})=>{
+    id,name,value,onChange,className,placeholder,isVisible,onToggleVisibility,})=>{
 
         return (
             <div>
@@ -20,6 +21,7 @@ const PasswordInput:React.FC<PasswordInputProps>=({
                 onChange={onChange}
                 placeholder={placeholder}
                 className={className}
+                id={id}
                 
                 />
 
