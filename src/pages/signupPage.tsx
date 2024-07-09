@@ -44,12 +44,8 @@ import usePasswordToggle from "../hooks/passwordToggler";
     else {
       const numberRegex = /[0-9]/;
       const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
-      if (!numberRegex.test(formData.password)) {
-        formErrors.password = 'Password must contain at least one number';
-        isValid = false;
-      }
-      else if (!specialCharRegex.test(formData.password)) {
-        formErrors.password = 'Password must contain at least one special character';
+      if (!numberRegex.test(formData.password)|| !specialCharRegex.test(formData.password)) {
+        formErrors.password = 'Password must contain at least one number and one special character';
         isValid = false;
       }
      else if(!formData.confirmpassword){
@@ -142,7 +138,7 @@ return (
               </div>
 
 <div className="w-4/5 vsm:w-1/2 ">
-            <label className="block" htmlFor="confirm-password">Password:</label>
+            <label className="block" htmlFor="password">Password:</label>
             <i className="text-green-700 absolute ml-1 pt-1 fa fa-key icon"></i>
               <PasswordInput id="password" className="border-2 border-black  rounded-full w-full text-center mb-20px" name="password" value={formData.password} onChange={handleChange} placeholder='' isVisible={isFieldVisible('password')} onToggleVisibility={()=>toggleVisibility('password')} />
               {errors.password && <span className='text-red-700'>{errors.password}</span>}

@@ -8,10 +8,11 @@ interface PasswordInputProps{
     isVisible:boolean;
     onToggleVisibility:()=>void;
     className:string;
+    
 }
 
 const PasswordInput:React.FC<PasswordInputProps>=({
-    id,name,value,onChange,className,placeholder,isVisible,onToggleVisibility,})=>{
+    id, name, value, onChange, className,placeholder,isVisible,onToggleVisibility})=>{
 
         return (
             <div>
@@ -22,6 +23,7 @@ const PasswordInput:React.FC<PasswordInputProps>=({
                 placeholder={placeholder}
                 className={className}
                 id={id}
+               
                 
                 />
 
