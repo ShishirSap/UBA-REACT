@@ -10,9 +10,7 @@ const cardArray=[]
 for (let i=0;i<101;i++){
     cardArray.push(
    
-        <div key={i} className="p-3 bg-gradient-to-r from-[#001aff00] to-[#0e579f]  border-[#131212] pd-10px rounded-[10%]   min-h-300px flex flex-col gap-4 items-center">
-
-
+        <div key={i} data-testid="user-card" className="p-3 bg-gradient-to-r from-[#001aff00] to-[#0e579f]  border-[#131212] pd-10px rounded-[10%]   min-h-300px flex flex-col gap-4 items-center">
         <div className="rounded-[80%] m-1 border-[5px] border-solid border-[#f6f6f6] flex justify-center overflow-hidden"><img className="max-w-full max-h-full aspect-video " src={profileimg}/></div>
     
     

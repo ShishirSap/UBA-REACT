@@ -68,7 +68,7 @@ const handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
 
 
   return (
-<body className="">
+<div className="">
     <div className="flex bg-gradient-to-r from-[#001aff00] to-[#0e579f] md:bg-none flex-col gap-10 w-screen h-screen  md:flex md:flex-row">
         
         <div className="flex  p-1 items-start w-1/5 md:w-1/2 md:items-center"><img src={logo}/></div>
@@ -96,17 +96,13 @@ const handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
      <div  className="px-6">Don't have an account? <Link className=" inline underline" to="/signup">Signup now</Link></div>
 
 </div>
-    
-   
-    
-    
  
    </form>
 </div>
     
        
     
-</body>
+</div>
 
   )
 }

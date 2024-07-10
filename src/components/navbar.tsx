@@ -20,7 +20,7 @@ const Navbar:React.FC = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex flex-grow justify-center items-center space-x-6">
-          <Link className="text-white hover:text-gray-300 transition duration-200" to="/userlisting">Home</Link>
+          <Link className="text-white hover:text-gray-300 transition duration-200" to="/">Home</Link>
           <Link className="text-white hover:text-gray-300 transition duration-200" to="/about">About</Link>
           <Link className="text-white hover:text-gray-300 transition duration-200" to="/editprofile">Edit Profile</Link>
           <Link className="text-white hover:text-gray-300 transition duration-200" to="/signup">Signup</Link>
@@ -45,7 +45,7 @@ const Navbar:React.FC = () => {
 
       {/* Mobile Menu */}
       <div className={`${isMenuVisible ? 'block' : 'hidden'} md:hidden bg-[#3e5cad] py-4`}>
-        <Link className="block text-white px-4 py-2 text-center hover:bg-[#2a4b8c] transition duration-200" to="/userlisting">Home</Link>
+        <Link className="block text-white px-4 py-2 text-center hover:bg-[#2a4b8c] transition duration-200" to="/">Home</Link>
         <Link className="block text-white px-4 py-2 text-center hover:bg-[#2a4b8c] transition duration-200" to="/about">About</Link>
         <Link className="block text-white px-4 py-2 text-center hover:bg-[#2a4b8c] transition duration-200" to="/editprofile">Edit Profile</Link>
         <Link className="block text-white px-4 py-2 text-center hover:bg-[#2a4b8c] transition duration-200" to="/signup">Signup</Link>
