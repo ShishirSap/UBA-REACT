@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1720522825317" clover="3.2.0">
-  <project timestamp="1720522825317" name="All files">
+<coverage generated="1720589485144" clover="3.2.0">
+  <project timestamp="1720589485144" name="All files">
     <metrics statements="129" coveredstatements="117" conditionals="43" coveredconditionals="39" methods="21" coveredmethods="14" elements="193" coveredelements="170" complexity="0" loc="129" ncloc="129" packages="4" files="9" classes="9"/>
     <package name="src">
       <metrics statements="13" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -160,14 +160,14 @@
       </file>
       <file name="userListingPage.tsx" path="C:\Users\NITRO\Documents\ubareact\react-app\src\pages\userListingPage.tsx">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="101" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="303" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
       </file>
     </package>
   </project>

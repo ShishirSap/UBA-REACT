@@ -140,7 +140,7 @@ return (
 <div className="w-4/5 vsm:w-1/2 ">
             <label className="block" htmlFor="password">Password:</label>
             <i className="text-green-700 absolute ml-1 pt-1 fa fa-key icon"></i>
-              <PasswordInput id="password" className="border-2 border-black  rounded-full w-full text-center mb-20px" name="password" value={formData.password} onChange={handleChange} placeholder='' isVisible={isFieldVisible('password')} onToggleVisibility={()=>toggleVisibility('password')} />
+              <PasswordInput datatestid="toggle-password-visibility" id="password" className="border-2 border-black  rounded-full w-full text-center mb-20px" name="password" value={formData.password} onChange={handleChange} placeholder='' isVisible={isFieldVisible('password')} onToggleVisibility={()=>toggleVisibility('password')} />
               {errors.password && <span className='text-red-700'>{errors.password}</span>}
 </div>
 
@@ -150,7 +150,7 @@ return (
 <div className="w-4/5 vsm:w-1/2 ">
             <label className="block" htmlFor="confirm-password">Confirm Password:</label>
             <i className="text-green-700 absolute ml-1 pt-1 fa fa-key icon"></i>
-              <PasswordInput id="confirm-password"  className="border-2 border-black  rounded-full w-full text-center mb-20px" name="confirmpassword" value={formData.confirmpassword} onChange={handleChange} placeholder='' isVisible={isFieldVisible('confirmpassword')} onToggleVisibility={()=>toggleVisibility('confirmpassword')} />
+              <PasswordInput datatestid="toggle-confirm-password-visibility" id="confirm-password"  className="border-2 border-black  rounded-full w-full text-center mb-20px" name="confirmpassword" value={formData.confirmpassword} onChange={handleChange} placeholder='' isVisible={isFieldVisible('confirmpassword')} onToggleVisibility={()=>toggleVisibility('confirmpassword')} />
               {errors.confirmpassword && <span className='text-red-700'>{errors.confirmpassword}</span>}
 </div>
       

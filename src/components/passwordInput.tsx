@@ -1,5 +1,6 @@
 import React from "react";
 interface PasswordInputProps{
+    datatestid:string;
     id:string
     name:string;
     value:string;
@@ -12,11 +13,12 @@ interface PasswordInputProps{
 }
 
 const PasswordInput:React.FC<PasswordInputProps>=({
-    id, name, value, onChange, className,placeholder,isVisible,onToggleVisibility})=>{
+    id,datatestid, name, value, onChange, className,placeholder,isVisible,onToggleVisibility})=>{
 
         return (
             <div>
                 <input type={isVisible?'text':'password'}
+                
                 name={name}
                 value={value}
                 onChange={onChange}
@@ -28,7 +30,7 @@ const PasswordInput:React.FC<PasswordInputProps>=({
                 />
 
             <div>
-                <input type='checkbox' id='checkbox' onClick={onToggleVisibility}/>
+                <input data-testid={datatestid} type='checkbox' id='checkbox' onClick={onToggleVisibility}/>
                 
                 <label className="font-normal inline text-1rem text-[#372d2d]" htmlFor="checkbox">Show</label>
                 </div>

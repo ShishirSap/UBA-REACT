@@ -101,6 +101,29 @@ describe('Testing Signup Component', () => {
       expect(screen.queryByText('Password and confirm password donot match')).not.toBeInTheDocument();
     });
   
+
+
+    test('toggles password visibility for password field', () => {
+      setup();
+      const passwordInput = screen.getByLabelText('Password:');
+      const toggleButton = screen.getByTestId('toggle-password-visibility');
+      expect(passwordInput).toHaveAttribute('type', 'password');
+      fireEvent.click(toggleButton);
+      expect(passwordInput).toHaveAttribute('type', 'text');
+      fireEvent.click(toggleButton);
+      expect(passwordInput).toHaveAttribute('type', 'password');
+    });
+  
+    test('toggles password visibility for confirm password field', () => {
+      setup();
+      const confirmPasswordInput = screen.getByLabelText('Confirm Password:');
+      const toggleButton = screen.getByTestId('toggle-confirm-password-visibility');
+      expect(confirmPasswordInput).toHaveAttribute('type', 'password');
+      fireEvent.click(toggleButton);
+      expect(confirmPasswordInput).toHaveAttribute('type', 'text');
+      fireEvent.click(toggleButton);
+      expect(confirmPasswordInput).toHaveAttribute('type', 'password');
+    });
   
   
   
