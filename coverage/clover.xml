@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1720589485144" clover="3.2.0">
-  <project timestamp="1720589485144" name="All files">
-    <metrics statements="129" coveredstatements="117" conditionals="43" coveredconditionals="39" methods="21" coveredmethods="14" elements="193" coveredelements="170" complexity="0" loc="129" ncloc="129" packages="4" files="9" classes="9"/>
+<coverage generated="1721392477740" clover="3.2.0">
+  <project timestamp="1721392477740" name="All files">
+    <metrics statements="129" coveredstatements="120" conditionals="43" coveredconditionals="40" methods="21" coveredmethods="18" elements="193" coveredelements="178" complexity="0" loc="129" ncloc="129" packages="4" files="9" classes="9"/>
     <package name="src">
       <metrics statements="13" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="C:\Users\NITRO\Documents\ubareact\react-app\src\App.tsx">
@@ -25,7 +25,7 @@
       </file>
     </package>
     <package name="src.components">
-      <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="2"/>
+      <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="4" methods="3" coveredmethods="2"/>
       <file name="navbar.tsx" path="C:\Users\NITRO\Documents\ubareact\react-app\src\components\navbar.tsx">
         <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="1"/>
         <line num="2" count="1" type="stmt"/>
@@ -38,28 +38,28 @@
         <line num="166" count="1" type="stmt"/>
       </file>
       <file name="passwordInput.tsx" path="C:\Users\NITRO\Documents\ubareact\react-app\src\components\passwordInput.tsx">
-        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="17" count="53" type="stmt"/>
-        <line num="38" count="3" type="stmt"/>
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="18" count="65" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.hooks">
-      <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="2"/>
+      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
       <file name="passwordToggler.tsx" path="C:\Users\NITRO\Documents\ubareact\react-app\src\hooks\passwordToggler.tsx">
-        <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="2"/>
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
         <line num="1" count="3" type="stmt"/>
         <line num="3" count="3" type="stmt"/>
-        <line num="4" count="34" type="stmt"/>
-        <line num="6" count="34" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="12" count="53" type="cond" truecount="2" falsecount="0"/>
-        <line num="14" count="34" type="stmt"/>
+        <line num="4" count="40" type="stmt"/>
+        <line num="6" count="40" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="12" count="65" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="40" type="stmt"/>
         <line num="17" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.pages">
-      <metrics statements="97" coveredstatements="91" conditionals="35" coveredconditionals="34" methods="13" coveredmethods="9"/>
+      <metrics statements="97" coveredstatements="93" conditionals="35" coveredconditionals="34" methods="13" coveredmethods="11"/>
       <file name="editprofilepage.tsx" path="C:\Users\NITRO\Documents\ubareact\react-app\src\pages\editprofilepage.tsx">
         <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="2" count="1" type="stmt"/>
@@ -108,17 +108,17 @@
         <line num="110" count="2" type="stmt"/>
       </file>
       <file name="signupPage.tsx" path="C:\Users\NITRO\Documents\ubareact\react-app\src\pages\signupPage.tsx">
-        <metrics statements="48" coveredstatements="44" conditionals="22" coveredconditionals="21" methods="6" coveredmethods="4"/>
+        <metrics statements="48" coveredstatements="46" conditionals="22" coveredconditionals="21" methods="6" coveredmethods="6"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
-        <line num="9" count="19" type="stmt"/>
-        <line num="11" count="19" type="stmt"/>
-        <line num="19" count="19" type="stmt"/>
-        <line num="26" count="19" type="stmt"/>
+        <line num="9" count="25" type="stmt"/>
+        <line num="11" count="25" type="stmt"/>
+        <line num="19" count="25" type="stmt"/>
+        <line num="26" count="25" type="stmt"/>
         <line num="27" count="5" type="stmt"/>
         <line num="28" count="5" type="stmt"/>
         <line num="29" count="5" type="cond" truecount="1" falsecount="0"/>
@@ -146,16 +146,16 @@
         <line num="66" count="5" type="stmt"/>
         <line num="67" count="5" type="stmt"/>
         <line num="68" count="5" type="stmt"/>
-        <line num="74" count="19" type="stmt"/>
+        <line num="74" count="25" type="stmt"/>
         <line num="75" count="5" type="stmt"/>
         <line num="76" count="5" type="cond" truecount="1" falsecount="0"/>
         <line num="77" count="1" type="stmt"/>
-        <line num="81" count="19" type="stmt"/>
+        <line num="81" count="25" type="stmt"/>
         <line num="83" count="8" type="stmt"/>
         <line num="85" count="8" type="stmt"/>
-        <line num="94" count="19" type="stmt"/>
-        <line num="143" count="0" type="stmt"/>
-        <line num="153" count="0" type="stmt"/>
+        <line num="94" count="25" type="stmt"/>
+        <line num="143" count="2" type="stmt"/>
+        <line num="153" count="2" type="stmt"/>
         <line num="165" count="2" type="stmt"/>
       </file>
       <file name="userListingPage.tsx" path="C:\Users\NITRO\Documents\ubareact\react-app\src\pages\userListingPage.tsx">

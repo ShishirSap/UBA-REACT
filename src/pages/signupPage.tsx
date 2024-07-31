@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import logo from '../assets/logo.jpeg'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PasswordInput from "../components/passwordInput";
 import usePasswordToggle from "../hooks/passwordToggler";
+import { signup } from "@/services/auth.service";
+import { toast } from "react-toastify";
 
 
  const Signup:React.FC =()=>{
+  const navigate=useNavigate()
   const { isFieldVisible, toggleVisibility } = usePasswordToggle();
 
   const [formData,setFormData]=useState({
-    name:'',
+    firstName:'',
+    lastName:'',
     email:'',
     password:'',
     confirmpassword:'',
@@ -17,7 +21,8 @@ import usePasswordToggle from "../hooks/passwordToggler";
   })
 
   const [errors,setErrors]=useState({
-    name:'',
+    firstName:'',
+    lastName:'',
     email:'',
     password:'',
     confirmpassword:''
@@ -25,9 +30,13 @@ import usePasswordToggle from "../hooks/passwordToggler";
 
   const validateSignupForm=()=>{
     let isValid=true
-    let formErrors={name:'',email:'',password:'',confirmpassword:''}
-    if(!formData.name){
-      formErrors.name='Username is required'
+    let formErrors={firstName:'',lastName:'',email:'',password:'',confirmpassword:''}
+    if(!formData.firstName){
+      formErrors.firstName='First name is required'
+      isValid=false
+    }
+    if(!formData.lastName){
+      formErrors.lastName='Last name is required'
       isValid=false
     }
     if(!formData.email){
@@ -64,17 +73,38 @@ import usePasswordToggle from "../hooks/passwordToggler";
    
 
     setErrors(formErrors)
-    console.log('Errors are', formErrors)
     return isValid;
 
    
 
   }
 
-const handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
+const handleSubmit=async(e:React.FormEvent<HTMLFormElement>)=>{
 e.preventDefault()
 if(validateSignupForm()){
-  console.log('Form submitted',formData)
+  const {firstName,lastName,email,password}=formData
+  const signupData={firstName,lastName,email,password}
+  try{
+    const response=await signup(signupData)
+    console.log('Response is',response)
+    toast.success('Signup successfull')
+    navigate('/login')
+
+
+  }
+  catch(error:any){
+    console.error('Signup error',error)
+
+  if(error.response.data.error.details){
+  const  errorarray= error.response.data.error.details
+  errorarray.forEach((element:any) => {
+    toast.error(element.message)
+    
+  });
+   
+  }
+  toast.error(error.response.data.error)
+  }
 }
 }
 
@@ -110,16 +140,29 @@ return (
           
           <div className=" font-sans font-semibold  flex flex-col   justify-center items-center gap-y-4">
 
-            <div className="w-4/5 vsm:w-1/2 "><label className="block" htmlFor="name">Name:</label>
+            <div className="w-4/5 vsm:w-1/2 "><label className="block" htmlFor="firstName">First Name:</label>
               <i className="text-green-700 absolute ml-1 pt-1 fa fa-user icon"></i>
               <input
               onChange={handleChange}
                 className="w-full  border-2 border-black  rounded-full mb-20px pl-6"
                 type="text"
-                id="name"
-                name="name"
+                id="firstName"
+                name="firstName"
               />
-              {errors.name && <span className='text-red-700'>{errors.name}</span>}
+              {errors.firstName && <span className='text-red-700'>{errors.firstName}</span>}
+              </div>
+
+
+              <div className="w-4/5 vsm:w-1/2 "><label className="block" htmlFor="lastName">Last Name:</label>
+              <i className="text-green-700 absolute ml-1 pt-1 fa fa-user icon"></i>
+              <input
+              onChange={handleChange}
+                className="w-full  border-2 border-black  rounded-full mb-20px pl-6"
+                type="text"
+                id="lastName"
+                name="lastName"
+              />
+              {errors.lastName && <span className='text-red-700'>{errors.lastName}</span>}
               </div>
             
 
