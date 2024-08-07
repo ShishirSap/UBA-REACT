@@ -1,11 +1,20 @@
 import { useState } from 'react'
 import React from 'react'
 import logo from '../assets/logo.jpeg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import PasswordInput from "../components/passwordInput";
 import usePasswordToggle from "../hooks/passwordToggler";
+import { useLoginMutation } from '@/services/api';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/app/store';
+import { setCredentials } from '@/features/auth/authSlice';
+import { toast } from 'react-toastify';
 
 const Login:React.FC = () => {
+  const navigate=useNavigate()
+
+  const [login,{isLoading}]=useLoginMutation()
+ const dispatch=useDispatch<AppDispatch>()
 
   const { isFieldVisible, toggleVisibility } = usePasswordToggle();
 
@@ -48,10 +57,25 @@ return isValid
 }
 
 
-const handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
+const handleSubmit=async(e:React.FormEvent<HTMLFormElement>)=>{
   e.preventDefault();
   if(validateLoginForm()){
-    console.log('Form submitted',formData)
+   try{
+    const userData=await login({email:formData.email,password:formData.password}).unwrap()
+    console.log('User data is',userData)
+    dispatch(setCredentials(userData))
+    navigate('/');
+    
+   }
+   catch(error:any){
+    console.error('Failed to log in :', error)
+if(error.data.message){
+      toast.error(error.data.message)
+}
+else{
+  toast.error('Login unsuccessfull')
+}
+   }
   }
 }
 

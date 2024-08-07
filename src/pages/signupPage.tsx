@@ -123,7 +123,8 @@ setFormData({
 
 return (
     <div className="m-0"> 
-    <div className="flex bg-gradient-to-r from-[#001aff00] to-[#0e579f] md:bg-none flex-col gap-10 w-screen h-screen  md:flex md:flex-row ">
+    <div className="flex bg-gradient-to-r from-[#001aff00] to-[#0e579f] md:bg-none flex-col gap-10 w-full h-screen
+      md:flex md:flex-row ">
       <div className="flex  p-1 items-start w-1/5 md:w-1/2 md:items-center">
         <img src={logo} alt="logo"/>
       </div>
