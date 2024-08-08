@@ -87,7 +87,7 @@ if(validateSignupForm()){
   try{
     const response=await signup(signupData)
     console.log('Response is',response)
-    toast.success('Signup successfull')
+    toast.success('Signup successfull Please check your email to verify your account')
     navigate('/login')
 
 

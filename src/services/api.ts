@@ -51,6 +51,14 @@ getInternById:builder.query<Intern,number>({
         body: credentials,
       }),
     }),
+    verifyEmail: builder.mutation<void, { token: string }>({
+      query: ({ token }) => ({
+        url: `/intern/verify-email`,
+        method: 'GET',
+        params: { token },
+      }),
+    }),
+
     updateIntern:builder.mutation<void,Partial<Intern> & {id:number}>({
       query:({id,...body})=>({
         url:`/intern/${id}`,
@@ -61,4 +69,4 @@ getInternById:builder.query<Intern,number>({
   }),
 });
 
-export const {useGetInternByIdQuery, useGetAllInternsQuery, useLoginMutation,useUpdateInternMutation } = api;
+export const {useVerifyEmailMutation,useGetInternByIdQuery, useGetAllInternsQuery, useLoginMutation,useUpdateInternMutation } = api;

@@ -9,6 +9,7 @@ import UserListingPage from './pages/userListingPage';
 import Editprofilepage from './pages/editprofilepage';
 import DashboardLayout from './layouts/Dashboard/DashboardLayout';
 import Profilepage from './pages/Profilepage';
+import VerifyEmail from './pages/emailVerifyPage';
 
 function App() {
 
@@ -21,6 +22,8 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/" element={<UserListingPage/>} />
         <Route path="/editprofile" element={<Editprofilepage/>}/>
+        <Route path="/verify-email" element={<VerifyEmail/>}/>
+        
         <Route path='/dashboard' element={<DashboardLayout/>}>
           {/* <Route index element={<Dashboard/>}/> */}
 
