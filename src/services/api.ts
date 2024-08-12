@@ -51,6 +51,14 @@ getInternById:builder.query<Intern,number>({
         body: credentials,
       }),
     }),
+
+      assignRole: builder.mutation({
+            query: ({ userId, role }) => ({
+                url: `/roles/assign-role/${userId}`,
+                method: 'POST',
+                body: { role },
+            }),
+        }),
     verifyEmail: builder.mutation<void, { token: string }>({
       query: ({ token }) => ({
         url: `/intern/verify-email`,
@@ -69,4 +77,4 @@ getInternById:builder.query<Intern,number>({
   }),
 });
 
-export const {useVerifyEmailMutation,useGetInternByIdQuery, useGetAllInternsQuery, useLoginMutation,useUpdateInternMutation } = api;
+export const {useAssignRoleMutation,useVerifyEmailMutation,useGetInternByIdQuery, useGetAllInternsQuery, useLoginMutation,useUpdateInternMutation } = api;

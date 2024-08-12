@@ -24,6 +24,7 @@ const Profilepage:React.FC = () => {
 
       const {data:user,error,isLoading}=useGetInternByIdQuery(parseInt(id!,10))
       const navigate=useNavigate()
+      const loggedInUser = JSON.parse(localStorage.getItem('user') || '{}');
     
       useEffect(() => {
         if (user) {
@@ -77,6 +78,9 @@ const Profilepage:React.FC = () => {
         }
     }
     
+    const handleAssignRole = () => {
+        navigate(`/assign-role/${id}`);
+    };
 
     if(!user){
         return <div>Loading...</div>
@@ -87,6 +91,11 @@ const Profilepage:React.FC = () => {
             <div className="flex p-1 items-start w-1/5 md:w-1/2 md:items-center">
                 <img src={logo} alt="logo" />
             </div>
+            {loggedInUser.roles.includes('admin') && (
+                        <div className="w-4/5 h-fit vsm:w-1/2 text-white p-1 text-center hover:bg-green-600 hover:cursor-pointer rounded-full mt-4 text-xl font-mono font-bold bg-green-800">
+                            <button type="button" onClick={handleAssignRole}>Assign Role</button>
+                        </div>
+                    )}
             <form
                 id="registrationForm"
                 className="h-full flex gap-4 flex-col w-full md:justify-center md:bg-gradient-to-r from-[#001aff00] to-[#0e579f]"
@@ -122,6 +131,7 @@ const Profilepage:React.FC = () => {
                             onChange={handleChange}
                         />
                     </div>
+                    
                     <div className="w-4/5 vsm:w-1/2 text-white p-1 text-center hover:bg-green-600 hover:cursor-pointer rounded-full mt-4 text-xl font-mono font-bold bg-green-800">
                         <button type="submit">Save Changes</button>
                     </div>
