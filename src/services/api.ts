@@ -27,7 +27,7 @@ export interface LoginResponse {
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:3000/api',
+    baseUrl: 'http://localhost:3000',
     prepareHeaders: (headers, { getState }) => {
       const token = localStorage.getItem('token');
       if (token) {
@@ -38,15 +38,15 @@ export const api = createApi({
   }),
   endpoints: (builder) => ({
     getAllInterns: builder.query<Intern[], void>({
-      query: () => '/intern', // Adjust the URL if necessary
+      query: () => '/graphql', // Adjust the URL if necessary
     }),
 getInternById:builder.query<Intern,number>({
-  query:(id)=>`/intern/${id}`
+  query:(id)=>`/api/intern/${id}`
 })
     ,
     login: builder.mutation<LoginResponse, { email: string; password: string }>({
       query: (credentials) => ({
-        url: '/intern/auth/login',
+        url: '/api/intern/auth/login',
         method: 'POST',
         body: credentials,
       }),
@@ -54,14 +54,14 @@ getInternById:builder.query<Intern,number>({
 
       assignRole: builder.mutation({
             query: ({ userId, role }) => ({
-                url: `/roles/assign-role/${userId}`,
+                url: `/api/roles/assign-role/${userId}`,
                 method: 'POST',
                 body: { role },
             }),
         }),
     verifyEmail: builder.mutation<void, { token: string }>({
       query: ({ token }) => ({
-        url: `/intern/verify-email`,
+        url: `/api/intern/verify-email`,
         method: 'GET',
         params: { token },
       }),
@@ -69,7 +69,7 @@ getInternById:builder.query<Intern,number>({
 
     updateIntern:builder.mutation<void,Partial<Intern> & {id:number}>({
       query:({id,...body})=>({
-        url:`/intern/${id}`,
+        url:`/api/intern/${id}`,
         method:'PUT',
         body,
       })
