@@ -43,11 +43,17 @@ const internsQuery = gql`
 `;
 
 const UserListingPage: React.FC = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
   // Execute the query using useQuery hook
-  const { data, loading, error, fetchMore } = useQuery(internsQuery, {
+  const { data, loading, error, fetchMore,refetch } = useQuery(internsQuery, {
     variables: {
       cursor: null,
-      limit: 10, // Assuming you want to start with 10 items
+      firstName:'',
+      lastName:'',
+      email:'',
+      limit: 15, // Assuming you want to start with 10 items
     },
     notifyOnNetworkStatusChange: true,
   });
@@ -62,7 +68,10 @@ const UserListingPage: React.FC = () => {
     fetchMore({
       variables: {
         cursor: pageInfo.endCursor,
-        limit: 10, // Continue fetching in chunks of 10
+        limit: 15, // Continue fetching in chunks of 10
+        firstName,
+        lastName,
+        email,
       },
       updateQuery: (previousResult, { fetchMoreResult }) => {
         const newInterns = fetchMoreResult.listInterns.interns;
@@ -81,9 +90,51 @@ const UserListingPage: React.FC = () => {
     });
   };
 
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    refetch({
+      cursor: null,
+      firstName: firstName || undefined,
+      lastName: lastName || undefined,
+      email: email || undefined,
+      limit: 15,
+    });
+  };
+
+
   return (
     <div>
       <Navbar />
+
+      <div className="sticky mt-4 top-0 bg-white z-10 shadow-md">
+        <form onSubmit={handleSearch} className="p-6 flex flex-col sm:flex-row gap-4 items-center mx-4">
+          <input
+            type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className="border border-gray-300 rounded-md p-3 w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className="border border-gray-300 rounded-md p-3 w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="border border-gray-300 rounded-md p-3 w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button type="submit" className="bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-auto">
+            Search
+          </button>
+        </form>
+      </div>
+
       <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6 lg:gap-8">
         {interns.map((intern: any) => (
           <UserCard key={intern.id} intern={intern} isAdmin={true} />
