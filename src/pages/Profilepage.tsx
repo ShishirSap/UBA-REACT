@@ -1,7 +1,5 @@
 import { useGetInternByIdQuery, useUpdateInternMutation } from '@/services/api'
-import { RootState } from '@reduxjs/toolkit/query'
 import React, { useState,useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import logo from '../assets/logo.jpeg'
@@ -22,7 +20,7 @@ const Profilepage:React.FC = () => {
         password: ''
       });
 
-      const {data:user,error,isLoading}=useGetInternByIdQuery(parseInt(id!,10))
+      const {data:user}=useGetInternByIdQuery(parseInt(id!,10))
       const navigate=useNavigate()
       const loggedInUser = JSON.parse(localStorage.getItem('user') || '{}');
     

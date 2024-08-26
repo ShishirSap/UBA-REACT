@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 const Login:React.FC = () => {
   const navigate=useNavigate()
 
-  const [login,{isLoading}]=useLoginMutation()
+  const [login]=useLoginMutation()
  const dispatch=useDispatch<AppDispatch>()
 
   const { isFieldVisible, toggleVisibility } = usePasswordToggle();

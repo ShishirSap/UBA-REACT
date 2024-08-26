@@ -1,6 +1,6 @@
 
 import './App.css'
-import { ToastContainer,toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import Signup from './pages/signupPage'
 import Login from './pages/loginPage';

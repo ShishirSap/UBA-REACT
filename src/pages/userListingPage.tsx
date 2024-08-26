@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import Navbar from '../components/navbar';
 import UserCard from './UserCard';
-import Forbidden from './errorpages/403forbidden';
 import { gql, useQuery } from '@apollo/client';
 const internsQuery = gql`
   query ListInterns(
