@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+# Internship Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is an Internship Management System built with React and Vite. The application allows administrators to create, read, update, and delete user profiles, including interns, mentors, and admin roles. The system is designed to manage internship positions, assign mentors, and evaluate interns efficiently.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User Management:** Create, read, update, and delete users (interns, mentors, admins).
+- **Role-Based Access:** Assign different roles and permissions to users.
+- **Internship Management:** Organize and manage internships, assign mentors, and track progress.
 
-## Expanding the ESLint configuration
+## Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Before you begin, make sure you have the following installed on your machine:
 
-- Configure the top-level `parserOptions` property like this:
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Docker](https://www.docker.com/get-started) (optional, for Docker users)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Getting Started
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Follow the instructions below to run the application either with Docker or without it.
+
+### Running without Docker
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone <repository-url>
+   cd <repository-folder>
