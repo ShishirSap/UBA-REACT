@@ -1,6 +1,7 @@
 import {createSlice,PayloadAction} from '@reduxjs/toolkit'
 import { api, Intern } from '@/services/api';
 import { LoginResponse } from '@/services/api';
+import { RootState } from '@/app/store';
 interface AuthState{
     token:string|null;
     roles:string[];
@@ -24,6 +25,10 @@ const authSlice=createSlice({
             state.token = payload.token;
             state.roles = payload.intern.roles;
             state.permissions = payload.intern.permissions;
+            localStorage.setItem('token', payload.token);
+      localStorage.setItem('roles', JSON.stringify(payload.intern.roles));
+      localStorage.setItem('permissions', JSON.stringify(payload.intern.permissions));
+      localStorage.setItem('user', JSON.stringify(payload.intern));
             
           },
         clearCredentials:(state)=>{
@@ -54,4 +59,5 @@ const authSlice=createSlice({
 })
 
 export const{setCredentials,clearCredentials}=authSlice.actions
+export const selectIsAuthenticated=(state:RootState)=>state.auth.token!==null;
 export default authSlice.reducer

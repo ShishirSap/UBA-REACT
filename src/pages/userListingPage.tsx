@@ -1,7 +1,8 @@
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import UserCard from './UserCard';
 import { gql, useQuery } from '@apollo/client';
+import Forbidden from './errorpages/403forbidden';
 const internsQuery = gql`
   query ListInterns(
     $cursor: [String]
@@ -45,6 +46,22 @@ const UserListingPage: React.FC = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [hasReadInternPermission,setHasReadInternPermission]=useState(false)
+
+
+
+  useEffect(() => {
+    const userPermissions = JSON.parse(localStorage.getItem('permissions') || '[]');
+
+
+    if (userPermissions.includes('read_intern')) {
+      setHasReadInternPermission(true);
+    } else {
+      setHasReadInternPermission(false);
+    }
+  }, []);
+  
+  
   // Execute the query using useQuery hook
   const { data, loading, error, fetchMore,refetch } = useQuery(internsQuery, {
     variables: {
@@ -57,6 +74,9 @@ const UserListingPage: React.FC = () => {
     notifyOnNetworkStatusChange: true,
   });
 
+  if(!hasReadInternPermission) {
+    return <Forbidden/>
+  }
   if (loading && !data) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 

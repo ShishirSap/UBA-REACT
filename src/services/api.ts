@@ -52,10 +52,10 @@ getInternById:builder.query<Intern,number>({
     }),
 
       assignRole: builder.mutation({
-            query: ({ userId, role }) => ({
+            query: ({ userId, name }) => ({
                 url: `/api/roles/assign-role/${userId}`,
                 method: 'POST',
-                body: { role },
+                body: { name },
             }),
         }),
     verifyEmail: builder.mutation<void, { token: string }>({

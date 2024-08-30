@@ -12,6 +12,7 @@ import Profilepage from './pages/Profilepage';
 import VerifyEmail from './pages/emailVerifyPage';
 import AssignRole from './pages/assignRole';
 import Notfound from './pages/errorpages/404notfound';
+import ProtectedRoute from './components/ProtectedRoute';
 function App() {
 
   return (
@@ -24,12 +25,12 @@ function App() {
         <Route path="/notfound" element={<Notfound/>} />
 
         <Route path="/login" element={<Login/>} />
-        <Route path="/" element={<UserListingPage/>} />
-        <Route path="/editprofile" element={<Editprofilepage/>}/>
+        <Route path="/" element={<ProtectedRoute><UserListingPage/></ProtectedRoute>} />
+        <Route path="/editprofile" element={<ProtectedRoute><Editprofilepage/></ProtectedRoute>}/>
         <Route path="/verify-email" element={<VerifyEmail/>}/>
-        <Route path="/assign-role/:id" element={<AssignRole />} />
+        <Route path="/assign-role/:id" element={<ProtectedRoute><AssignRole /></ProtectedRoute>} />
         
-        <Route path='/dashboard' element={<DashboardLayout/>}>
+        <Route path='/dashboard' element={<ProtectedRoute><DashboardLayout/></ProtectedRoute>}>
           {/* <Route index element={<Dashboard/>}/> */}
 
          <Route path='signup' element={<Signup/>}/>
