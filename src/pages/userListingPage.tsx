@@ -74,6 +74,11 @@ const UserListingPage: React.FC = () => {
     notifyOnNetworkStatusChange: true,
   });
 
+  useEffect(() => {
+    // Refetch data when the component is mounted or remounted
+    refetch();
+  }, [refetch]);
+
   if(!hasReadInternPermission) {
     return <Forbidden/>
   }

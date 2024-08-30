@@ -1,4 +1,4 @@
-import { useGetInternByIdQuery, useUpdateInternMutation } from '@/services/api'
+import { useDeleteInternMutation, useGetInternByIdQuery, useUpdateInternMutation } from '@/services/api'
 import React, { useState,useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -20,7 +20,7 @@ const Profilepage:React.FC = () => {
         password: ''
       });
 
-      const {data:user}=useGetInternByIdQuery(parseInt(id!,10))
+      const {data:user,refetch}=useGetInternByIdQuery(parseInt(id!,10))
       const navigate=useNavigate()
       const loggedInUser = JSON.parse(localStorage.getItem('user') || '{}');
     
@@ -43,6 +43,7 @@ const Profilepage:React.FC = () => {
         }
       }, [user]);
       const [updateIntern]=useUpdateInternMutation()
+      const [deleteIntern]=useDeleteInternMutation()
 
       const handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
         setFormData({
@@ -50,6 +51,20 @@ const Profilepage:React.FC = () => {
             [e.target.name]:e.target.value
         })
       }
+
+      const handleDelete = async () => {
+        if (window.confirm('Are you sure you want to delete this user?')) {
+          try {
+            await deleteIntern(id).unwrap();
+            refetch()
+            toast.success('User deleted successfully');
+            navigate('/dashboard/users');
+          } catch (error: any) {
+            console.error('Error deleting user:', error);
+            toast.error('Error deleting user');
+          }
+        }
+      };
 
       const handleSubmit=async(e:React.FormEvent)=>{
         e.preventDefault();
@@ -59,6 +74,7 @@ const Profilepage:React.FC = () => {
           console.log('response is' ,response)
             
             toast.success('Profile updated successfully')
+            refetch()
             navigate('/')
             }
             else{
@@ -89,11 +105,7 @@ const Profilepage:React.FC = () => {
             <div className="flex p-1 items-start w-1/5 md:w-1/2 md:items-center">
                 <img src={logo} alt="logo" />
             </div>
-            {loggedInUser.roles.includes('admin') && (
-                        <div className="w-4/5 h-fit vsm:w-1/2 text-white p-1 text-center hover:bg-green-600 hover:cursor-pointer rounded-full mt-4 text-xl font-mono font-bold bg-green-800">
-                            <button type="button" onClick={handleAssignRole}>Assign Role</button>
-                        </div>
-                    )}
+            
             <form
                 id="registrationForm"
                 className="h-full flex gap-4 flex-col w-full md:justify-center md:bg-gradient-to-r from-[#001aff00] to-[#0e579f]"
@@ -135,6 +147,21 @@ const Profilepage:React.FC = () => {
                     </div>
                 </div>
             </form>
+            <div className="w-4/5 h-fit vsm:w-1/2   text-center  mt-4  font-bold ">
+
+            {loggedInUser.roles.includes('admin') && (
+                        <div className="w-4/5 h-fit vsm:w-1/2 text-white p-1 text-center hover:bg-green-600 hover:cursor-pointer rounded-full mt-4 text-xl font-mono font-bold bg-green-800">
+                            <button type="button" onClick={handleAssignRole}>Assign Role</button>
+                        </div>
+                    )}
+            {loggedInUser.roles.includes('admin') && (
+                <div className="w-4/5 h-fit vsm:w-1/2 text-white p-1 text-center hover:bg-red-600 hover:cursor-pointer rounded-full mt-4 text-xl font-mono font-bold bg-red-800">
+                    <button type="button" onClick={handleDelete}>Delete User</button>
+                </div>
+            )}
+            </div>
+
+            
         </div>    )
 }
 

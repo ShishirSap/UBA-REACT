@@ -51,6 +51,12 @@ getInternById:builder.query<Intern,number>({
       }),
     }),
 
+    deleteIntern: builder.mutation({
+      query: (id) => ({
+        url: `/api/intern/delete/${id}`,
+        method: 'DELETE',
+      }),
+    }),
       assignRole: builder.mutation({
             query: ({ userId, name }) => ({
                 url: `/api/roles/assign-role/${userId}`,
@@ -76,4 +82,4 @@ getInternById:builder.query<Intern,number>({
   }),
 });
 
-export const {useAssignRoleMutation,useVerifyEmailMutation,useGetInternByIdQuery, useGetAllInternsQuery, useLoginMutation,useUpdateInternMutation } = api;
+export const {useDeleteInternMutation,useAssignRoleMutation,useVerifyEmailMutation,useGetInternByIdQuery, useGetAllInternsQuery, useLoginMutation,useUpdateInternMutation } = api;
