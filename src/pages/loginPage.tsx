@@ -64,7 +64,7 @@ const handleSubmit=async(e:React.FormEvent<HTMLFormElement>)=>{
     const userData=await login({email:formData.email,password:formData.password}).unwrap()
     console.log('User data is',userData)
     dispatch(setCredentials(userData))
-    navigate('/');
+    navigate('/dashboard');
     
    }
    catch(error:any){

@@ -17,6 +17,10 @@ function App() {
     <Router>
       <ToastContainer />
       <Routes>
+
+
+
+        
         <Route path="/signup" element={<Signup />} />
         <Route path="/notfound" element={<Notfound />} />
 
@@ -25,7 +29,7 @@ function App() {
           path="/"
           element={
             <ProtectedRoute>
-              <UserListingPage />
+              <DashboardLayout />
             </ProtectedRoute>
           }
         />

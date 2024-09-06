@@ -128,7 +128,7 @@ const UserListingPage: React.FC = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <div className="sticky mt-4 top-0 bg-white z-10 shadow-md">
         <form onSubmit={handleSearch} className="p-6 flex flex-col sm:flex-row gap-4 items-center mx-4">
